@@ -11,12 +11,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          //
-          Text("Hello world home screen,"),
-          //
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(13.0),
+        child: Column(
+          children: [
+            //
+            Text("Hello world home screen,"),
+            //
+          ],
+        ),
       ),
     );
   }
