@@ -28,6 +28,4 @@ void _registerBlocs() {
   getIt.registerSingleton<LanguageBloc>(LanguageBloc());
 
 
-
-
 }
