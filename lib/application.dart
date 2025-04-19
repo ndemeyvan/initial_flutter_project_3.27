@@ -2,7 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maliya_mobile/1_share/presentation/themes/maliya_theme.dart';
-import 'package:maliya_mobile/2_login/login_screen.dart';
+import 'package:maliya_mobile/route/route.dart';
+import 'package:maliya_mobile/utils/app_constant.dart';
 
 class Application extends StatefulWidget {
   const Application({Key? key}) : super(key: key);
@@ -20,6 +21,8 @@ class _ApplicationState extends State<Application> {
       designSize: MediaQuery.of(context).size,
       builder: (context, _) {
         return MaterialApp(
+          initialRoute: AppRoutes.splashScreen,
+          onGenerateRoute: RouteGenerator.generateRoute,
           theme: MaliyaTheme.themeData(context),
           darkTheme: MaliyaTheme.themeData(context, isDarkTheme: true),
           themeMode: ThemeMode.light,
@@ -28,7 +31,6 @@ class _ApplicationState extends State<Application> {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           onGenerateTitle: (_) => 'Maliya',
-          home: LoginScreen(),
         );
       },
     );
