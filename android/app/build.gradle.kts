@@ -30,6 +30,25 @@ android {
         versionName = flutter.versionName
     }
 
+    flavorDimensions += listOf("default")
+    productFlavors {
+        create("production") {
+            dimension = "default"
+            applicationIdSuffix = ""
+            manifestPlaceholders.putAll(mapOf("appName" to "Maliya"))
+        }
+        create("staging") {
+            dimension = "default"
+            applicationIdSuffix = ".stg"
+            manifestPlaceholders.putAll(mapOf("appName" to "[STG] Maliya"))
+        }
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders.putAll(mapOf("appName" to "[DEV] Maliya"))
+        }
+    }
+
 
     buildTypes {
         release {
