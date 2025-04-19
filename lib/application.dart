@@ -1,8 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:maliya_mobile/1_share/business_logic/language_bloc.dart';
-import 'package:maliya_mobile/1_share/locator_service.dart';
+import 'package:maliya_mobile/1_share/presentation/themes/maliya_theme.dart';
 import 'package:maliya_mobile/2_login/login_screen.dart';
 
 class Application extends StatefulWidget {
@@ -15,20 +14,23 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<LanguageBloc>(
-          create: (context) => getIt.get<LanguageBloc>(),
-        ),
-      ],
-      child: ScreenUtilInit(
-        splitScreenMode: true,
-        minTextAdapt: true,
-        designSize: MediaQuery.of(context).size,
-        builder: (context, _) {
-          return LoginScreen();
-        },
-      ),
+    return ScreenUtilInit(
+      splitScreenMode: true,
+      minTextAdapt: true,
+      designSize: MediaQuery.of(context).size,
+      builder: (context, _) {
+        return MaterialApp(
+          theme: MaliyaTheme.themeData(context),
+          darkTheme: MaliyaTheme.themeData(context, isDarkTheme: true),
+          themeMode: ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          onGenerateTitle: (_) => 'Maliya',
+          home: LoginScreen(),
+        );
+      },
     );
   }
 }

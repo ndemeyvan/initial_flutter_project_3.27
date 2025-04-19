@@ -14,7 +14,7 @@
         "development",
         "--dart-define-from-file=dev.env.json",
         "--target",
-        "lib/main_deve.dart",
+        "lib/main_dev.dart",
         "--verbose"
       ]
     },
